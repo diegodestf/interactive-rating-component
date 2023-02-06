@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Helmet from 'react-helmet';
 import { CSSTransition } from 'react-transition-group';
 import { Rating } from './components/Rating';
 import { Thanks } from './components/Thanks';
@@ -18,6 +19,9 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Interactive Rating Component</title>
+      </Helmet>
       <CSSTransition
         in={showRatingComponent}
         timeout={3000}
