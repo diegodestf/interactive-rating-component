@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+
+:root {
+  --orange-primary: hsl(25, 97%, 53%);
+
+  --plain-white: hsl(0, 0%, 100%);
+  --light-gray-neutral: hsl(217, 12%, 63%);
+  --dark-gray-neutral: hsl(216, 12%, 54%);
+  --dark-blue-neutral: hsl(213, 19%, 18%);
+  --darker-blue-neutral: hsl(216, 12%, 8%);
+
+  --ff-overpass: 'Overpass', sans-serif;
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+}
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  background-color: black;
+  display: grid;
+  place-content: center;
+}
+
+.card {
+  font-family: var(--ff-overpass);
+  font-weight: var(--fw-normal);
+  color: var(--light-gray-neutral);
+  background: linear-gradient(
+    var(--dark-blue-neutral),
+    var(--darker-blue-neutral)
+  );
+  display: grid;
+  gap: 1rem;
+  padding: 3rem;
+  margin: 1.5rem;
+  border-radius: 1rem;
+  max-width: 460px;
+}
+
+.card__title {
+  color: var(--plain-white);
+  font-weight: var(--fw-bold);
+}
+
+.card__icon,
+.card__button--back {
+  background-color: var(--dark-blue-neutral);
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.card__icon {
+  padding: 0.875rem;
+}
+
+.card__button--group {
+  display: inline-flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.card__button--back {
+  border: none;
+  width: 45px;
+  height: 44px;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.card__button--back svg {
+  width: 20px;
+  height: 21px;
+  margin: 0 auto;
+}
+
+.card__button--back:is(:hover),
+.card__icon:is(:hover) {
+  background-color: var(--light-gray-neutral);
+  transition: background-color 1s;
+}
+
+.card__button--group button {
+  color: var(--dark-gray-neutral);
+  background-color: var(--dark-blue-neutral);
+  transition: background-color 0.8s, color 0.8s;
+  border-radius: 50%;
+  padding: 0.5rem 1rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.card__button--group button:is(:active, :focus) {
+  color: var(--plain-white);
+  background-color: var(--light-gray-neutral);
+}
+
+.card__button--group button:is(:hover) {
+  color: var(--plain-white);
+  background-color: var(--orange-primary);
+}
+
+.card__button--submit {
+  font-weight: var(--fw-normal);
+  background-image: none;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background-color: var(--orange-primary);
+  color: var(--plain-white);
+  border: 0;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.card__button--submit.with-icon {
+  background-image: url('./images/lock.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--light-gray-neutral);
+  margin: 0 auto;
+  cursor: not-allowed;
+  height: 40px;
+  width: 100%;
+}
+
+.card__button--submit,
+.card__button--submit.with-icon {
+  transition: background-color 1s;
+}
+
+.card__button--submit:is(:hover) {
+  background-color: var(--plain-white);
+  color: var(--orange-primary);
+}
+
+.card__greeting {
+  margin: 0 auto;
+}
+
+.card__selection {
+  margin: 0 auto;
+  background-color: var(--dark-blue-neutral);
+  padding: 0.6rem;
+  border-radius: 2rem;
+  color: var(--orange-primary);
+  font-weight: var(--fw-normal);
+  font-size: 0.9rem;
+}
+
+.card__thanks {
+  color: var(--plain-white);
+  margin: 0 auto;
+}
+
+p {
+  line-height: 2;
+}
+
+@media (max-width: 500px) {
+  p {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+//animations
+
+.myclass-appear {
+  opacity: 0;
+}
+
+.myclass-appear-active {
+  opacity: 1;
+  transition: opacity 3000ms ease-in;
+}
+
+.myclass-enter {
+  opacity: 0;
+}
+.myclass-enter-active {
+  opacity: 1;
+  transition: opacity 3000ms;
+}
+
+.myclass-exit {
+  opacity: 0;
+}
+
+.myclass-exit-active {
+  opacity: 1;
+  transition: opacity 3000ms;
+}
